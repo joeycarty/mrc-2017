@@ -1,0 +1,235 @@
+//
+// @header
+//
+
+/** BEGINNING OF HEADER STYLES **/
+$header-height: 50px;
+$menu-bar-width: 25px;
+
+
+// styles for when logged into WordPress.
+$admin-bar: 32px;
+
+#wpadminbar {
+  position: fixed;
+}
+
+.admin-bar {
+  .main-header {
+    padding-top: 20px + $admin-bar;
+  }
+
+  .main-container {
+    padding-top: 100px + $admin-bar;
+  }
+
+  .header-start-project-wrapper {
+    top: 37px + $admin-bar;
+  }
+}
+
+.main-header {
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  width: 100%;
+  padding: 20px 20px 0 20px;
+  @include transition(top .5s ease-in-out);
+
+  // hides header on scroll
+  &.nav-up {
+    top: -80px; // height of header
+  }
+}
+
+.header-main-area {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  overflow: hidden;
+  background-color: $white;
+  font-size: 0; // eliminates white space after inline-block child elements
+  @include box-shadow;
+  @include transition(height .5s ease-in-out);
+  
+  > div {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  .header-nav-wrapper {
+    display: block; // shows menu correctly if JS is disabled
+    @include rem(16); //recovers font-size lost in parent element
+  } 
+}
+
+// main menu logo styles
+.header-logo {
+  height: $header-height;
+
+  .mrc-logo {
+    position: relative;
+    height: 100%;
+    padding: 12.5px 16px 12.5px 20px;
+
+    // turns blue logo grayscale
+    .blue-fill {
+      fill: $gray;
+      @include transition;
+    }
+    .blue-md-fill {
+      fill: $gray-md;
+      @include transition;
+    }
+    .blue-dk-fill {
+      fill: $gray-dk;
+      @include transition;
+    }
+
+    &:hover {
+      // returns to initial state
+      .blue-fill{fill:$blue;}
+      .blue-md-fill{fill:$blue-md;}
+      .blue-dk-fill{fill:$blue-dk;}
+    }
+  }
+}
+
+// ul for main menu
+.header-nav-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+
+  a {
+    display: block;
+    padding: .7rem;
+    border: 0;
+
+    &:hover {
+      background-color: $blue;
+      color: $white;
+    }
+  }
+}
+
+// main menu's CTA button to Start a Project
+.header-start-project-wrapper {
+  display: none;
+  text-align: center;
+  background-color: $gray;
+  
+  a {
+    font-family: $font-header;
+    color: $white;
+    display: block;
+    padding: 1rem;
+
+    &:hover {
+      border-color: transparent;
+      color: $white;
+      @include bg-gradient;
+    }
+  }
+}
+
+// parent of .trigger-menu-icon
+.trigger-menu-wrapper {
+  position: relative;
+  float: right;
+  height: $header-height;
+  width: 60px;
+  background-color: $blue;
+  @include transition;
+  
+  &:hover {
+    .menu-item-bar {
+      &:first-of-type,
+      &:last-of-type {
+        width: $menu-bar-width;
+      }
+    }
+  }
+}
+
+// parent of all .menu-item-bar's
+.trigger-menu-icon {
+  position: absolute;
+  left: 17px; 
+  top: calc(50% - 10px); // centers the three bars
+  height: 20px;
+  width: $menu-bar-width;
+  text-align: center;
+  transform-origin: center center;
+  @include transition;
+}
+
+// single hamburger menu bar
+.menu-item-bar {
+  position: relative;
+  display: block;
+  width: $menu-bar-width;
+  height: 2px;
+  background-color: $white;
+  @include transition;
+  
+  &:nth-of-type(2){
+    margin: 6px 0;
+  }
+  &:first-of-type {
+    width: 20px;
+  }
+  &:last-of-type {
+    width: 15px;
+  }
+}
+
+// styles for when the main navigation menu is open
+.header-nav-open {
+  .header-start-project-wrapper {
+    display: block; // show 'Start Project' button
+  }
+
+  .header-nav-wrapper {
+    // display: block !important; // show the menu
+    border-top: 1px solid $gray-ltst;
+  }
+
+  // turns hamburger menu into active state
+  .menu-item-bar {
+    &:first-of-type,
+    &:last-of-type {
+      width: 12px;
+      transform-origin: 0 50%;
+    }
+    &:first-of-type {
+      @include transform(rotate(-45deg));
+      top: 8px;
+    }
+    &:last-of-type {
+      @include transform(rotate(45deg));
+      top: -8px;
+    }
+  }
+  
+  // rotates 'open' arrow to point in correct direction
+  .trigger-menu-icon {
+    left: 16px; // exact position
+    @include transform(rotate(90deg));
+  }
+
+  // prevents arrow from growing on hover
+  .trigger-menu-wrapper {
+    &:hover {
+      .menu-item-bar {
+        &:first-of-type,
+        &:last-of-type {
+          width: 12px;
+        }
+      }
+    }
+  }
+}
+
+/** END OF HEADER STYLES **/

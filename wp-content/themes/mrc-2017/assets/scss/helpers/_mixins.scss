@@ -1,0 +1,111 @@
+//
+// @mixins
+//
+
+@mixin rem($value) {
+  font-size: $value + px;
+  font-size: rem-calc($value);
+}
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin box-shadow($args: small){
+  @if $args == small {
+    box-shadow: 3px 6px 20px rgba($black, 0.2);
+  } @else if $args == large {
+    box-shadow: 3px 10px 30px rgba($black, 0.25);
+  } @else {
+    box-shadow: $args;
+  }
+}
+
+@mixin bg-gradient($args: linear-gradient(to right,$blue,$blue-dk)) {
+  background-image: $args;
+}
+
+@mixin bg-gradient-clip($args: -webkit-linear-gradient(right,$blue,$blue-dk)) {
+  background-image: $args;
+}
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+@mixin transition($args: all .5s ease){
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin transform($args){
+  -webkit-transform: $args;
+  -moz-transform: $args;
+  -ms-transform: $args;
+  -o-transform: $args;
+  transform: $args;
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};      
+}
+
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }  
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }  
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+@include keyframes(bounce){
+  0% {
+    @include transform(translateY(0));
+  }
+  52% {
+    @include transform(translateY(-6px));
+  }
+  100% {
+    @include transform(translateY(0));
+  }
+}
+
+@include keyframes(fade-in){
+  0% {
+    @include opacity(0);
+  }
+  100% {
+    @include opacity(1);
+  }
+}
+
+.bounce {
+  @include animation(bounce 2s 1);  
+}
+.fade-in {
+  @include animation(fade-in 2s 1);
+}
+

@@ -1,0 +1,47 @@
+.contact-info {
+  margin-top: 2rem;
+  
+  h6 {
+    margin-bottom: 0.25em;
+  }
+  p {
+    margin-top: 0;
+
+    a {
+    	color: $text;
+    }
+  }
+}
+
+.current-positions {
+	&::after {
+		content: " ";
+		clear: both;
+		display: table;
+	}
+}
+
+.job {
+	margin-bottom: 2rem;
+	padding-right: 3rem;
+	max-width: 400px;
+
+	h1 {
+		margin-bottom: 0;
+		@include transition;
+	}
+
+	p {
+		margin-top: 0;
+	}
+
+	a {
+		display: block;
+		
+		&:hover {
+			h1 {
+				color: $blue;
+			}
+		}
+	}
+}

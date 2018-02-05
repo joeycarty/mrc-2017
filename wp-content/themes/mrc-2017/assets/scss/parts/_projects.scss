@@ -1,0 +1,311 @@
+.project-list {
+  &::after {
+    content: " ";
+    clear: both;
+    display: table;
+  }
+
+  .testimonial,
+  .split-callout {
+    margin-bottom: 4rem;
+  }
+}
+
+.featured-project-preview {
+  &:not(:last-of-type){
+    margin-bottom: 4rem;
+  }
+}
+
+.project-name-wrapper {
+  h1 {
+    // padding-right: 2rem; // prevents long titles from overlapping
+    word-break: break-word; // prevents long titles from overlapping
+    margin-bottom: .25rem;  
+    @include transition;
+
+    &:hover {
+      color: $blue;
+    }
+  }
+
+  .categories {
+  	padding-right: 20%;
+  	opacity: .5;
+  }
+}
+
+.project-details {
+  max-width: 400px;
+
+  p {
+    margin-top: .3rem;
+    margin-bottom: .3rem;
+  }
+}
+
+.project-thumbnail {
+  position: relative;
+  margin-top: 2rem;
+  overflow: hidden;
+  max-width: 1500px;
+  @include bg-gradient;
+  @include box-shadow(large);
+  
+  img {
+    display: block;
+    width: 100%;
+    max-width: 1500px;
+    @include transition;
+  }
+
+  span {
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    display: block;
+    font-size: 6vw;
+    font-family: $font-header;
+    color: $white;
+    @include opacity(0);
+    @include transform(translateY(-50%));
+
+    p {
+      max-width: none;
+      color: $white;
+      font-family: $font-body;
+      font-weight: 200;
+      margin: 0;
+    }
+  }
+
+  a:hover {
+    img {
+      @include opacity(.1);
+      transform: scale(1.25);
+      // filter: blur(20px);
+    }
+    span {
+      @include opacity(1);
+    }
+  }
+}
+
+// styles for toggled page view, showing condensed client list
+.client-list {
+  .project-thumbnail,
+  .project-list .testimonial,
+  .project-list .split-callout {
+    display: none;
+  }
+
+  .featured-project-preview:not(:last-of-type) {
+    margin-bottom: 3rem;
+  }
+
+  .featured-project-preview {
+    margin-bottom: 2rem;
+    max-width: 360px;
+  }
+
+  .project-details {
+    h6 {
+      margin-top: .8em;
+    }
+  }
+}
+
+.featured-project-preview {
+  .project-thumbnail {
+    max-width: 300px;
+
+    img {
+      max-width: 300px;
+    }
+
+    span {
+      @include rem(24);
+    }
+  }
+
+  .project-name-wrapper {
+    h1 {
+      padding-right: 2rem; // prevents long titles from overlapping
+    }
+  }
+}
+
+
+// // Icon to toggle the view of the project list
+// .toggle-view {  
+//   a {
+//     @include rem(14);
+//     color: $blue;
+
+//     &:hover {
+//       span {
+//         border-color: $blue;
+//       }
+
+//       i {
+//         border-color: $blue;
+
+//         &::before,
+//         &::after {
+//           background-color: $blue;
+//         }
+//       }
+//     }
+//   }
+  
+//   span {
+//     display: inline-block;
+//     vertical-align: middle;
+//     margin-right: 1rem;
+//     border-bottom: 1px solid transparent;
+//     @include transition;
+//   }
+
+//   // toggle-view icons
+//   i {
+//     position: relative;
+//     display: inline-block;
+//     vertical-align: middle;
+//     border: 1px solid $gray-lt;
+//     border-radius: 6px;
+//     width: 50px;
+//     height: 40px;
+//     @include transition;
+
+//     &::before,
+//     &::after {
+//       @include transition;
+//     }
+
+//     &.display-none {
+//       display: none;
+//     }
+//   }
+// }
+
+// // grid icon for toggling project list
+// .client-view {
+//   // horizontal line
+//   &::before {
+//     content: " ";
+//     position: absolute;
+//     top: calc(50% - .5px);
+//     height: 1px;
+//     width: 100%;
+//     background-color: $gray-lt;
+//   }
+//   // vertical line
+//   &::after {
+//     content: " ";
+//     position: absolute;
+//     top: 0;
+//     left: calc(50% - .5px);
+//     width: 1px;
+//     height: 100%;
+//     background-color: $gray-lt;
+//   }
+// }
+
+// // full preview icon for toggling project list
+// .full-view {
+//   // horizontal line
+//   &::before {
+//     content: " ";
+//     position: absolute;
+//     top: 25%;
+//     height: 1px;
+//     width: 100%;
+//     background-color: $gray-lt;
+//   }
+// }
+
+// spacing for project shots/testimonials on the single-project pages
+.single-project-section {
+  > div:not(:last-of-type) {
+    margin-bottom: 3rem;
+  }
+}
+
+// archive styles
+.archived-project {
+  // @include box-shadow(large);
+  max-width: 320px;
+  width: calc(50% - 1rem);
+  // float: left;
+  // margin-right: 1rem;
+  // margin-bottom: 1rem;
+
+  img {
+    display: block;
+    @include transition;
+  }
+
+  a {
+    display: block;
+    background-color: $blue;
+    @include bg-gradient;
+    overflow: hidden;
+
+    &:hover {
+      img {
+        @include opacity(.1);
+        transform: scale(1.25);
+      }
+    }
+  }
+}
+
+.archive-section {
+  h1 {
+    margin-bottom: 0;
+  }
+  h6 {
+    margin-bottom: 2rem;
+    margin-top: .5em;
+  }
+
+  .flex {
+  	display: flex;
+  	flex-wrap: wrap;
+  }
+}
+
+.archive-popup {
+  display: none;
+  color: $white;
+  
+  h1, h2, h3, h4, h5, h6, p {
+    color: $white;
+  }
+  
+  h6 {
+    margin-bottom: 0;
+  }
+
+  h1 {
+    margin: 0;
+    @include rem(50);
+  }
+
+  p {
+    margin-top: 0;
+  }
+
+  img {
+    display: block;
+  }
+}
+
+.archive-full {
+  max-height: 70vh;
+  overflow: scroll;
+  margin-bottom: 2rem;
+  @include box-shadow(large);
+}

@@ -1,0 +1,493 @@
+body {
+  background-color: $white;
+  font-family: $font-body;
+  font-weight: 300;
+  color: $text;
+  margin: 0;
+  position: relative;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: $blue;
+  color: $white;
+}
+::-moz-selection {
+  background: $blue;
+  color: $white;
+}
+
+blockquote {
+  position: relative;
+  margin-left: 40px;
+
+  &::before {
+    content: "“";
+    color: $blue;
+    position: absolute;
+    font-size: 70px;
+    top: -29px;
+    left: -29px;
+  }
+}
+
+hr {
+	width: 50%;
+	margin: 3rem 0;
+	border: 1px solid $gray-ltst;
+	height: 1px;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  
+/*
+  &[src$=".gif"] {
+    width: auto;
+    max-width: 280px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+*/
+  
+  &.aligncenter {
+	  display: block;
+	  margin-left: auto;
+	  margin-right: auto;
+  }
+}
+
+.display-none {
+  display: none;
+}
+
+.screen-reader-text {
+	display: none;
+}
+
+// wraps all content except header and footer
+.main-container {
+  position: relative;
+  z-index: 10;
+  padding-top: 100px;  
+}
+
+section {
+  position: relative;
+
+  &:not(.indent) {
+    padding: 20px;
+    margin-bottom: 5rem;
+  }
+}
+
+// used for small call-to-actions like "Hiring" and "Featured Work" on homepage
+aside {
+  margin: 3rem 0;
+}
+
+// keeps .columns from floating out of parent
+.column-wrapper {
+  &::after {
+    content: " ";
+    clear: both;
+    display: table;
+  }
+}
+
+.side-nav {
+  position: absolute;
+  z-index: 50;
+  text-align: right;
+  width: 80px;
+  float: left;
+  margin-top: 40px;
+  margin-left: -80px;
+
+  a {
+    @include opacity(.5);
+
+    &:hover {
+      @include opacity(1);
+    }
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+    padding: 0;
+    
+    a {
+      @include rem(14);
+
+      &:hover {
+
+      }
+    }
+    &.active {
+      a {
+        color: $blue;
+        @include opacity(1);
+      }
+    }
+  }
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0 0 2.5rem;
+
+  > div {
+    position: relative;
+    margin-bottom: 10px;
+  }
+}
+
+label {
+  position: absolute;
+  z-index: 1;
+  left: 10px; // same size padding-left on all inputs
+  top: 16px;
+  @include rem(12);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 200;
+  @include transition;
+  //@include transform(translateY(16px)); // perfectly aligns label in center of input
+  transform-origin: 0 0;
+}
+
+p.label {
+  @include rem(12);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 200;
+  margin-bottom: 0;
+}
+
+// active/filled state for labels with input field
+.input-filled {
+  label {
+    @include transform(scale(.7)); //translateY(10px));
+    top: 7px;
+  }
+}
+
+input, textarea {
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+
+input:not([type="submit"]),
+input:not([type="checkbox"]),
+input:not([type="radio"]),
+textarea,
+select {
+  display: block;
+  border: 0;
+  border-radius: 0;
+  background: $gray-ltst;
+  @include rem(16);
+  font-family: $font-body;
+  font-weight: 400;
+  padding: 18px 10px 8px;
+  max-width: 420px;
+  width: 100%;
+  line-height: 1.5;
+
+  &:focus {
+    box-shadow: 0 0 0 2px rgba($blue, 1);
+    outline: 0 none;    
+  }
+}
+
+input[type="file"]{
+  padding: 13px 10px;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+// Contact Form 7 Styles
+span {
+  &.wpcf7-not-valid-tip {
+    color: $blue-dk;
+    @include rem(12);
+    display: inline-block;
+  }
+}
+div {
+  &.wpcf7-response-output {
+    color: $blue-dk;
+    padding-left: 0;
+    margin-left: 0;
+    border: 0 !important;
+  }
+
+  &.wpcf7-mail-sent-ok,
+  &.wpcf7-validation-errors {
+    border: 0;
+  }
+}
+
+button {
+  cursor: pointer;
+  position: relative;
+
+  &[type="submit"] {
+    display: block;
+    color: $blue;
+    @include bg-gradient-clip;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border: 0;
+    padding: 0 0 2rem;
+    @include transition;
+    
+    h1 {
+      margin: 0;
+    }
+
+    &::after {
+      content: " ";
+      position: absolute;
+      z-index: 1;
+      bottom: 20px;
+      left: 50%;
+      height: 2px;
+      width: 0;
+      @include bg-gradient-clip;
+      @include transform(translateX(-50%));
+      @include transition;
+    }
+
+    &:focus,
+    &:hover { 
+      outline: 0 none;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.back-button {
+	padding-left: 20px;
+}
+
+// mandatory for fixing sticky menus
+.stuck {
+  position: fixed;
+  top: 75px;
+}
+
+.watermark-header {
+  position: relative;
+  z-index: -1;
+  color: $gray-ltst;
+}
+
+// call-to-action section block
+.cta {
+  text-align: center;
+  
+  h1 {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  a {
+    position: relative;
+    display: inline-block;
+    color: $blue;
+    @include bg-gradient-clip;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border: 0;
+    padding: 5rem 0;
+  
+    &::after {
+      content: " ";
+      position: absolute;
+      bottom: 4rem;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      @include bg-gradient-clip;
+      @include transition;
+      @include transform(translateX(-50%));
+    }
+
+    &:hover {
+      @include transform(scale(1.15));
+
+      &::after {
+        content: " ";
+        width: 100%;
+      }
+    }
+  }
+}
+
+.testimonial-quote {
+  text-indent: -1rem;
+}
+
+.testimonial,
+.split-callout {
+  text-align: center;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.testimonial {
+  p {
+    span {
+      display: block;
+      margin: 0 auto;
+
+      &:first-of-type {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+.testimonial-headshot {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 100em;
+  overflow: hidden;
+  @include box-shadow(small);
+
+  img {
+    display: block;
+  }
+}
+
+.hero-intro-wrapper {
+  max-width: 800px;
+
+  p {
+    margin-top: 0;
+  }
+}
+
+.startproject-hero-wrapper {
+	display: flex;
+	flex-wrap: wrap-reverse;
+	
+	.hero, .callout {
+		width: 100%;
+	}
+}
+
+.callout {
+	img {
+		@include box-shadow(large);	
+	}
+
+	div {
+		max-width: 360px;
+	}
+}
+
+
+// BLOG POST STYLES
+.author-image {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  border-radius: 100px;
+  overflow: hidden;
+  display: inline-block;
+  box-shadow: 0px 0px 20px rgba($black, 0.2);
+}
+.author {
+  margin-bottom: 30px;
+
+	> * {
+		display: inline-block;
+		vertical-align: middle;
+	}
+}
+
+.categories {
+	@include rem(10);
+	color: $gray;
+
+	span {
+		@include rem(10);
+		font-weight: 600;
+		text-transform: uppercase;
+		color: $gray-lt;
+		letter-spacing: 1px;
+	}
+	a {
+		color: $gray;
+	}
+}
+
+.blog-archive {
+	article {
+		margin-bottom: 7rem;
+	}
+
+	header {
+		h1 {
+			a {
+		    position: relative;
+		    display: inline-block;
+		    color: $text;
+
+		    &:hover {
+		    	color: $blue;
+			    // background-image: -webkit-linear-gradient(right, #1ea3e5, #005198);
+			    // -webkit-background-clip: text;
+			    // -webkit-text-fill-color: transparent;
+			    // border: 0;
+		    	// transform: scale(1.15);
+		    }
+			}
+		}
+	}
+}
+
+.post-navigation {
+	a {
+		@extend h3;
+    position: relative;
+    display: inline-block;
+    color: $text;
+
+    &:hover {
+    	color: $blue;
+	    background-image: -webkit-linear-gradient(right, #1ea3e5, #005198);
+	    -webkit-background-clip: text;
+	    -webkit-text-fill-color: transparent;
+	    border: 0;
+    	transform: scale(1.15);
+    }
+	}
+	
+	.nav-next,
+	.nav-previous {
+		margin-bottom: 20px;
+	}
+	
+}
+

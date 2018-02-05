@@ -1,0 +1,436 @@
+//
+// @responsive
+//
+
+@media screen and (max-width: 641px){
+	.featured-project-preview {
+		.project-tagline,
+		.project-excerpt,
+		.project-viewlink,
+		.project-name-wrapper .categories {
+			display: none;
+		}
+
+		.project-thumbnail {
+			max-width: 100%;
+			
+			img {
+	      max-width: 100%;
+	    }
+		}
+	}
+}
+
+@media screen and (min-width: 640px){
+	// break header into separate elements
+	.header-main-area {
+	  width: auto;
+    display: inline-block;
+	}
+
+	.header-start-project-wrapper {
+	  position: absolute;
+	  right: 20px;
+    top: 37px; // exact positioning to center with rest of header
+	  display: block;
+	  background-color: transparent;
+		
+	  a {
+	  	position: relative;
+	  	color: $text;
+			padding: 0;
+			
+			&::after {
+	      content: " ";
+	      position: absolute;
+	      bottom: -4px;
+	      left: 50%;
+	      width: 0;
+	      height: 1px;
+	      @include bg-gradient-clip;
+	      @include transition;
+	      @include transform(translateX(-50%));
+	    }
+
+	  	&:hover {
+	  		color: $blue;
+	  		background: transparent;
+		    @include bg-gradient-clip;
+		    -webkit-background-clip: text;
+		    -webkit-text-fill-color: transparent;
+
+		    &::after {
+	        content: " ";
+	        width: 100%;
+	      }
+	  	}
+	  }
+	}
+
+	.trigger-menu-wrapper {
+	  float: none;
+	}
+
+	.header-nav-list {
+    text-align: left;
+
+    a {
+	    padding-left: 20px; // left align with MRC logo
+    }
+	}
+
+	.hero {
+	  h1 {
+	    font-size: 6vw;
+	  }
+	}
+
+	.featured-project-preview {
+		.project-text {
+			display: inline-block;
+			vertical-align: middle;
+			width: 300px;
+		}
+
+		.project-details {
+			width: 100%;
+			padding-right: 20px;
+
+			h6 {
+				margin-top: .5em;
+			}
+		}
+
+		.project-thumbnail {
+			display: inline-block;
+			vertical-align: middle;
+			width: calc(100% - 320px); // so objects dont wrap
+			margin-top: 0;
+		}
+	}
+
+	.testimonial {
+	  p {
+	    span {
+	      display: inline-block;
+	      vertical-align: middle;
+
+	      &:first-of-type {
+	        margin-right: 1rem;
+	        margin-bottom: 0;
+	      }
+	    }
+	  }
+	}
+
+
+	.job {
+		width: 50%;
+		float: left;
+	}
+
+	.client-list {
+	  .featured-project-preview {
+	    padding-right: 3rem;
+	    width: 49%;
+	    display: inline-block;
+	    vertical-align: top;
+	  }
+	}
+
+	.main-footer {
+		padding-top: 7rem;
+		text-align: left;
+
+		.column {
+			float: left;
+			width: 33%;
+			padding-left: 10%;
+		}
+	}
+
+	.copyright {
+		padding-top: 5rem;
+	}
+}
+
+
+// desktop styles
+@media screen and (min-width: 900px){
+	// spacing for project shots/testimonials on the single-project pages
+	.single-project-section {
+	  > div:not(:last-of-type) {
+	    margin-bottom: 7rem;
+	  }
+	}
+
+	.post-navigation {
+		.nav-next,
+		.nav-previous {
+			width: 49%;
+			display: inline-block;
+			vertical-align: top;
+		}
+
+		.nav-next {
+			text-align: right;
+		}
+	}
+
+	.back-button {
+		padding-left: 0;
+	}
+	
+	.hero {
+		p {
+	    @include rem(18);
+	  }
+
+	  .mrc-logo {
+	  	position: relative;
+			left: -160px;
+	    margin-bottom: -.75em;
+	    z-index: -1;
+	  }
+	}
+
+	p, h3, ul {
+		max-width: 700px;
+	}
+	
+	
+
+	.main-header {
+		padding-left: 80px;
+		padding-right: 80px;
+	}
+	
+	.header-start-project-wrapper {
+	  right: 80px;
+  }	
+
+	section {
+	  padding-left: 80px;
+
+	  &:not(.indent) {
+		  padding-left: 80px;
+		  padding-right: 80px;
+		  // margin-bottom: 10rem;
+	  }
+	}
+
+	aside {
+	  text-align: right;
+
+	  p {
+	  	max-width: none;
+
+	  	&.small {
+	  		@include rem(16);
+	  	}
+	  }
+	}
+
+	.hero {
+	  svg {
+	    padding-left: 20px;
+	  }
+	}
+
+	h1 { 	@include rem(50); }
+	h2 { 	@include rem(75); }
+	p  { 	@include rem(16); }
+	
+	.undent {
+		position: relative;
+		left: -80px;
+	}
+
+	.watermark-header {
+    margin-bottom: -.75em;
+	}
+
+	.testimonial {
+  	width: 80%;
+  	max-width: 1280px;
+    text-align: left;
+    padding: 0;
+  }
+
+	.split-callout {
+  	width: 100%;
+    text-align: left;
+    padding: 0;
+
+	 	> div {
+  		display: inline-block;
+			vertical-align: top;
+		} 
+  }
+	
+	.split-text {
+		width: 60%;
+	}
+
+	.split-link {
+		text-align: right;
+		width: 39%;
+
+		// mimics H1 styling
+		p {
+			@include rem(50);
+			line-height: 1.15;
+			font-weight: 400;
+			margin: .5em 0;
+			font-family: $font-header;
+
+	    &:hover { 
+	      a::after {
+	        width: 100%;
+	      }
+	    }
+		}
+
+		a {
+			display: inline-block;	
+			position: relative;
+			color: $blue;
+	    @include bg-gradient-clip;
+	    -webkit-background-clip: text;
+	    -webkit-text-fill-color: transparent;
+
+			&::after {
+	      content: " ";
+	      position: absolute;
+	      z-index: 1;
+	      bottom: 0;
+	      left: 0;
+	      height: 2px;
+	      width: 0;
+	      @include bg-gradient-clip;
+	      @include transition;
+	    }
+
+			&:hover {
+				border-color: transparent;
+			}
+		}
+	}
+
+	.hero-intro-wrapper,
+	.contact-info {
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	.hero-intro-wrapper{
+		width: 75%;
+	}
+
+	.contact-info {
+		margin-top: 0;
+		width: 24%;
+		max-width: 300px;
+	}
+
+	.toggle-view {
+		position: absolute;
+		right: 80px;
+		top: 50%;
+	}
+
+	.project-image {
+		p {
+			text-align: right;
+			max-width: 1500px; // same as max-width on .project-thumbnail img
+		}
+	}
+
+	.startproject-hero-wrapper {
+		.hero {
+			width: 70%;
+		}
+		.callout {
+			width: 30%;
+	    padding-left: 0;
+		}
+	}
+}
+
+@media screen and (min-width: 1200px){
+	.featured-project-preview {
+		.project-text {
+			width: 66%;
+			max-width: 750px;
+		}
+
+		.project-details {
+			width: 53%;
+		}
+		
+		.project-name-wrapper {
+			width: 46%;
+		}
+
+		.project-thumbnail {
+			width: 33%;
+			max-width: 600px;
+			
+			img {
+				max-width: 600px;
+			}
+		}
+	}
+
+	// .project-list {
+	//   .testimonial,
+	//   .split-callout {
+	//     margin-bottom: 14rem;
+	//   }
+	// }
+
+	// .featured-project-preview {
+	//   &:not(:last-of-type){
+	//     margin-bottom: 14rem;
+	//   }
+	// }
+
+	// .single-project-section {
+	//   > div:not(:last-of-type) {
+	//     margin-bottom: 14rem;
+	//   }
+	// }
+
+	.project-name-wrapper {
+		width: 300px;
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	.project-details {
+		display: inline-block;
+		
+		h6 {
+			margin-top: 4rem;
+		}
+	}
+
+	.job {
+		width: 33.333%;
+		padding-right: 5rem;
+	}
+
+	.client-list {
+	  .featured-project-preview {
+	    width: 33%;
+	  }
+	}
+}
+
+@media screen and (min-width: 1400px){
+	.hero {
+	  h1 {
+	    @include rem(85);
+	  }
+	}
+}

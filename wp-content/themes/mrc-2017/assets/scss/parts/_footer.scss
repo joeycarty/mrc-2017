@@ -1,0 +1,99 @@
+//
+// @footer
+//
+
+/** BEGINNING OF FOOTER STYLES **/
+.main-footer {
+	position: relative;
+	z-index: 5;
+	padding: 4rem 20px 20px;
+	background-color: $blue;
+	text-align: center;
+	color: $gray-ltst;
+	@include bg-gradient;
+	@include rem(12);
+
+	h2 {
+		@include rem(12);
+		color: $blue-dkst;
+		margin-top: 1rem;
+		margin-bottom: .5rem;
+	}
+
+	a {
+		display: block;
+		color: $gray-ltst;
+		line-height: 2;
+		border: 0;
+
+		&:hover {
+			color: $gray-ltst;
+		}
+	}
+
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+
+		&:hover {
+			a {
+				@include opacity(.3);
+
+				&:hover {
+					@include opacity(1);
+				}
+			}
+		}
+	}
+
+	.column {
+		margin-bottom: 2rem;
+	}
+}
+
+.copyright {
+	padding-top: 3rem;
+	text-align: center;
+}
+
+a.back-to-top {
+	position: fixed;
+	left: 40px;
+	bottom: 25px;
+	text-align: center;
+	border: 0;
+	width: 30px;
+	height: 30px;
+	display: block;
+	@include opacity(.4);
+
+	&:hover,
+	&:focus {
+		outline: none;
+		@include opacity(1);
+		@include animation(bounce 2s infinite);  
+	}
+	
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		width: 2px;
+		height: 20px;
+		background-color: $white;
+		border-radius: 2px;
+		transform-origin: 0 0;
+	}
+
+	&::before {
+	  @include transform(rotate(-45deg));
+	  left: 14px;
+	  top: 1px;
+	}
+
+	&::after {
+	  @include transform(rotate(45deg));
+	}
+}
+/** END OF FOOTER STYLES **/

@@ -1,0 +1,32 @@
+// homepage hero
+.hero {
+  h1 {
+    @include rem(32);
+  }
+
+  .mrc-logo {
+    width: 70%;
+    min-width: 200px;
+    max-width: 1000px;
+    @include rem(120);
+
+    // turns blue logo grayscale
+    .blue-fill{fill:$gray-ltst;}
+    .blue-md-fill{fill:$gray-ltst;}
+    .blue-dk-fill{fill:$gray-ltst;}
+  }
+}
+
+.team-lineup {
+  // background: url('../img/team-lineup-shadow.png') bottom center no-repeat;
+  // background-size: 100%;
+  // max-width: 1280px;
+  // padding: 0 20px;
+  @include box-shadow();
+  margin-top: 3rem;
+
+  img {
+    display: block;
+    // width: 90%;
+  }
+}
